@@ -1,0 +1,49 @@
+<h1>List of Rewards</h1>
+
+<a href="rewards/create">
+	<button type="button" class="btn btn-primary">Create</button>
+</a>
+
+<div class="rewards-container">
+	<% if (!rewards.length) { %>
+	<h4> No rewards found</h4>
+	<% } else { %>
+
+	<div class="row">
+		<div class="col-xs-8 col-sm-7 col-md-5">
+			<div class="table-responsive">
+				<table class="table table-condensed table-bordered table-hover table-striped">
+					<thead>
+					<tr>
+						<td width="10%"><strong>ID</strong></td>
+						<td width="15%"><strong>Name</strong></td>
+						<td width="15%"><strong>Value</strong></td>
+						<td width="2%">&nbsp;</td>
+						<td width="2%">&nbsp;</td>
+					</tr>
+					</thead>
+					<tbody>
+					<% rewards.forEach((reward) => { %>
+					<tr>
+						<td><%= reward.id %></td>
+						<td><%= reward.name %></td>
+						<td><%= reward.value %> points</td>
+						<td><a href='rewards/<%= reward.id %>'>
+								<button type="button" class="btn btn-large btn-info">Edit</td>
+						</a>
+						<td>
+							<form action="rewards/<%= reward.id %>/delete" method="POST">
+								<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
+						</td>
+					</tr>
+					<% }) %>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+	<% } %>
+
+</div>
